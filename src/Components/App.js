@@ -32,7 +32,7 @@ function App() {
   const [match, setMatch] = useState([])
   
   const transactionsCopy = [...transactions]
-  
+
   function updateTableData(newTransactions){
     setTransactions((transactions) =>  [...transactions, newTransactions])
   }
@@ -40,7 +40,6 @@ function App() {
   
   function renderSearch(searchTerm){
     setSearchQuery(searchTerm)
-    
   }
 
   //Filter data based on the search query
@@ -50,29 +49,15 @@ function App() {
     setTransactions(filteredArray)
   },[searchQuery])
   
- 
-
   return (
     <div id="main">
       <DisplayForms renderSearch={renderSearch} updateTableData={updateTableData}/>
-      {/* Render table with the fetched transactions */}
+      
+      {/* Render table with the fetched transactions and filtered transaction*/}
       <TableOfTransactions transactions={transactions} match={match}/>
-      {/* Render table of the filtered transactions
-      <TableOfTransactions match={match}/> */}
-
     </div>
   )
 
-
-
-   // useEffect(() => {
-  //   setMatch([])
-  //   setSearchData([...transactions])
-  //   const match = searchData.filter(transaction => transaction.description.includes(searchWord.charAt(0).toUpperCase()+searchWord.slice(1,searchWord.length-1)) == true)
-  //   console.log(match)
-  //   setTransactions(match)
-  // },[searchWord])
- 
 }
 
 export default App;

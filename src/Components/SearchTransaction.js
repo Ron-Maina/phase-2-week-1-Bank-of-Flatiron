@@ -1,17 +1,26 @@
 import React, {useState, useEffect} from 'react'
+import TableOfTransactions from './TableOfTransactions'
 
 
 function SearchTransaction({transactions}) {
- const[search, setSearch] = useState("")
+ const[searchTerm, setSearchTerm] = useState("")
+ const[filteredData, setFilteredData] = useState(transactions)
 
  
     function handleSubmit(e){
         e.preventDefault()
-        console.log(search)
-        const match = transactions.filter(transaction => {
-            return transaction.description.includes(search.charAt(0).toUpperCase()+search.slice(1,search.length-1)) == true}) 
-        console.log(match) 
+        // console.log(search)
+        
     }
+    useEffect(() => {
+      const match = transactions.filter(transaction => {
+        return transaction.description.includes(searchTerm.charAt(0).toUpperCase()+searchTerm.slice(1,searchTerm.length-1)) == true}) 
+        setFilteredData(match)
+        // return <TableOfTransactions transactions={filteredData}/>
+        // console.log(match)
+      }, [searchTerm])
+   
+      
       
  
   return (
@@ -22,8 +31,8 @@ function SearchTransaction({transactions}) {
         type="text"
         placeholder='search by description'
         id="search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
         /> 
         <input type="submit" value="Search"/>
     </form>

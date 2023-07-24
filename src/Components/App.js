@@ -7,9 +7,13 @@ import DisplayForms from './DisplayForms';
 
 
 
+
 function App() {
 
   const [transactions, setTransactions] = useState([])
+  const [searchData, setSearchData] = useState([])
+  const [searchWord, setSearchWord] = useState("")
+  const [match, setMatch] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:3001/transactions')
@@ -34,10 +38,23 @@ function App() {
 
   
   function renderSearch(searchTerm){
-    const match = transactions.filter(transaction => transaction.description.includes(searchTerm.charAt(0).toUpperCase()+searchTerm.slice(1,searchTerm.length-1)) == true)
-    setTransactions(match)
-    
+    setSearchWord("")
+    setSearchWord(searchTerm)
+    // setMatch([])
+    // setSearchData([...transactions])
+    // const match = searchData.filter(transaction => transaction.description.includes(searchWord.charAt(0).toUpperCase()+searchWord.slice(1,searchWord.length-1)) == true)
+    // console.log(match)
+    // setTransactions(match)
   }
+
+  useEffect(() => {
+    setMatch([])
+    setSearchData([...transactions])
+    const match = searchData.filter(transaction => transaction.description.includes(searchWord.charAt(0).toUpperCase()+searchWord.slice(1,searchWord.length-1)) == true)
+    console.log(match)
+    setTransactions(match)
+  },[searchWord])
+
   return (
     <div id="main">
       <DisplayForms renderSearch={renderSearch} updateTableData={updateTableData}/>

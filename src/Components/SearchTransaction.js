@@ -9,6 +9,10 @@ function SearchTransaction({renderSearch}) {
  //Handles submit of the search term and passes it to the App.js component
  function handleSubmit(e){
         e.preventDefault()
+        if (searchTerm == ""){
+          alert("Must have a value");
+          return false
+        }
         renderSearch(searchTerm)
         setSearchTerm("")    
     }

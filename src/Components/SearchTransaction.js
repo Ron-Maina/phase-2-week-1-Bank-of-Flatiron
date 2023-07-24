@@ -1,6 +1,6 @@
 //Renders the search bar
 
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 function SearchTransaction({renderSearch}) {
  const[searchTerm, setSearchTerm] = useState("")
@@ -9,7 +9,7 @@ function SearchTransaction({renderSearch}) {
  //Handles submit of the search term and passes it to the App.js component
  function handleSubmit(e){
         e.preventDefault()
-        if (searchTerm == ""){
+        if (searchTerm === ""){
           alert("Must have a value");
           return false
         }

@@ -9,12 +9,7 @@ import DisplayForms from './DisplayForms';
 
 
 function App() {
-
-  const [transactions, setTransactions] = useState([])
-  const [searchData, setSearchData] = useState([])
-  const [searchWord, setSearchWord] = useState("")
-  const [match, setMatch] = useState([])
-
+  //Fetching data from the db.json file to populate the transaction table
   useEffect(() => {
     fetch('http://localhost:3001/transactions')
     .then(res => res.json())
@@ -30,37 +25,53 @@ function App() {
     })
   }, [])
 
+  const [transactions, setTransactions] = useState([])
   
+  const [searchQuery, setSearchQuery] = useState("")
 
+  const [match, setMatch] = useState([])
+  
+  const transactionsCopy = [...transactions]
+  
   function updateTableData(newTransactions){
     setTransactions((transactions) =>  [...transactions, newTransactions])
   }
 
   
   function renderSearch(searchTerm){
-    setSearchWord("")
-    setSearchWord(searchTerm)
-    // setMatch([])
-    // setSearchData([...transactions])
-    // const match = searchData.filter(transaction => transaction.description.includes(searchWord.charAt(0).toUpperCase()+searchWord.slice(1,searchWord.length-1)) == true)
-    // console.log(match)
-    // setTransactions(match)
+    setSearchQuery(searchTerm)
+    
   }
 
+  //Filter data based on the search query
   useEffect(() => {
-    setMatch([])
-    setSearchData([...transactions])
-    const match = searchData.filter(transaction => transaction.description.includes(searchWord.charAt(0).toUpperCase()+searchWord.slice(1,searchWord.length-1)) == true)
-    console.log(match)
-    setTransactions(match)
-  },[searchWord])
+    const filteredArray = transactions.filter(transaction => transaction.description.includes(searchQuery.charAt(0).toUpperCase()+searchQuery.slice(1,searchQuery.length-1)))
+    console.log(filteredArray)
+    setTransactions(filteredArray)
+  },[searchQuery])
+  
+ 
 
   return (
     <div id="main">
       <DisplayForms renderSearch={renderSearch} updateTableData={updateTableData}/>
-      <TableOfTransactions transactions={transactions}/>
+      {/* Render table with the fetched transactions */}
+      <TableOfTransactions transactions={transactions} match={match}/>
+      {/* Render table of the filtered transactions
+      <TableOfTransactions match={match}/> */}
+
     </div>
   )
+
+
+
+   // useEffect(() => {
+  //   setMatch([])
+  //   setSearchData([...transactions])
+  //   const match = searchData.filter(transaction => transaction.description.includes(searchWord.charAt(0).toUpperCase()+searchWord.slice(1,searchWord.length-1)) == true)
+  //   console.log(match)
+  //   setTransactions(match)
+  // },[searchWord])
  
 }
 

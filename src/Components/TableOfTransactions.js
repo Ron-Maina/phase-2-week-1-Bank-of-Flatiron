@@ -4,7 +4,16 @@ import React, {useState, useEffect} from 'react'
 
 
 //function receiving an argument from the App.js
-function TableOfTransactions({transactions}) {
+function TableOfTransactions({transactions, match}){
+  const [currentData, setCurrentData] = useState([])
+
+  useEffect(() => {
+    if (transactions && transactions.length>0){
+      setCurrentData(transactions)
+    }else if(match && match.length>0){
+      setCurrentData(match)
+    }
+  },[transactions, match])
   return (
     <div id="table">
         <h2>Transactions</h2>
@@ -17,7 +26,7 @@ function TableOfTransactions({transactions}) {
                 <th>Amount</th>
             </tr>
             <>
-            {transactions.map(transaction => (
+            {currentData.map(transaction => (
             <tr key={transaction.id}>
                 <td>{transaction.date}</td>
                 <td>{transaction.description}</td>

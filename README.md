@@ -1,5 +1,5 @@
 # Bank of Flatiron
-Bank of FlatIron Built With HTML, CSS, and React, JUL 17 2023
+Bank of FlatIron Built With HTML, CSS, and React
 
 By Ron Maina
 

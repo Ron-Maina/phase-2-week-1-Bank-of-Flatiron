@@ -1,9 +1,9 @@
-//Renders all transactions to the DOM
+//Renders transactions from the db.json folder to the DOM
 
 import React, {useState, useEffect} from 'react'
 
 
-
+//function receiving an argument from the App.js
 function TableOfTransactions({transactions}) {
   return (
     <div id="table">

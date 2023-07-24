@@ -1,7 +1,7 @@
+//Parent component
+
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import NewTransaction from './NewTransaction';
-import SearchTransaction from './SearchTransaction';
 import TableOfTransactions from './TableOfTransactions';
 import DisplayForms from './DisplayForms';
 
@@ -10,7 +10,7 @@ import DisplayForms from './DisplayForms';
 function App() {
 
   const [transactions, setTransactions] = useState([])
-  // const [tableData, setTableData] = useState([])
+
   useEffect(() => {
     fetch('http://localhost:3001/transactions')
     .then(res => res.json())
@@ -26,13 +26,21 @@ function App() {
     })
   }, [])
 
-  function updateTableData(newtransactions){
-    setTransactions((transactions) =>  [...transactions, newtransactions])
+  
+
+  function updateTableData(newTransactions){
+    setTransactions((transactions) =>  [...transactions, newTransactions])
   }
 
+  
+  function renderSearch(searchTerm){
+    const match = transactions.filter(transaction => transaction.description.includes(searchTerm.charAt(0).toUpperCase()+searchTerm.slice(1,searchTerm.length-1)) == true)
+    setTransactions(match)
+    
+  }
   return (
     <div id="main">
-      <DisplayForms transactions={transactions} updateTableData={updateTableData}/>
+      <DisplayForms renderSearch={renderSearch} updateTableData={updateTableData}/>
       <TableOfTransactions transactions={transactions}/>
     </div>
   )

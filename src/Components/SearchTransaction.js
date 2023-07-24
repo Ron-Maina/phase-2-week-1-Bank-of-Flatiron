@@ -1,28 +1,19 @@
+//Renders the search bar
+
 import React, {useState, useEffect} from 'react'
-import TableOfTransactions from './TableOfTransactions'
 
-
-function SearchTransaction({transactions}) {
+function SearchTransaction({renderSearch}) {
  const[searchTerm, setSearchTerm] = useState("")
- const[filteredData, setFilteredData] = useState(transactions)
+ console.log(searchTerm)
 
- 
-    function handleSubmit(e){
+ //Handles submit of the search term and passes it to the App.js component
+ function handleSubmit(e){
         e.preventDefault()
-        // console.log(search)
-        
+        renderSearch(searchTerm)
+        setSearchTerm("")    
     }
-    useEffect(() => {
-      const match = transactions.filter(transaction => {
-        return transaction.description.includes(searchTerm.charAt(0).toUpperCase()+searchTerm.slice(1,searchTerm.length-1)) == true}) 
-        setFilteredData(match)
-        // return <TableOfTransactions transactions={filteredData}/>
-        // console.log(match)
-      }, [searchTerm])
-      
-      
-      
- 
+  
+   
   return (
     <form onSubmit={handleSubmit}>
         <h2>Search Transaction</h2>

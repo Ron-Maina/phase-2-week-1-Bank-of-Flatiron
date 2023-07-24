@@ -1,39 +1,32 @@
 //Handles the creation of a new transaction
-import React, {useState, useEffect, useRef} from 'react'
-// import TableOfTransactions from './TableOfTransactions'
-import App from './App'
-import DisplayForms from './DisplayForms'
-import TableOfTransactions from './TableOfTransactions'
+import React, {useState, useEffect} from 'react'
 
 
 function NewTransaction({updateTableData}) {
    
    console.log(updateTableData)
     //Single state element for all input fields
-    const [newtransactions, setnewTransactions] = useState({
+    const [newTransactions, setnewTransactions] = useState({
         date: "",
         description: "",
         category: "",
         amount: "",
     })
     
+    //handles form submit functionality
     function handleSubmit(e){
         e.preventDefault()
-        updateTableData(newtransactions)
+        updateTableData(newTransactions)
         setnewTransactions({
             date: "",
             description: "",
             category: "",
             amount: "",
         })
-
+        alert("Transaction Added Successfully")
       
     }
-    
-    
-    
-    
-    
+    //rendered JSX
     return (
         <>
         <form onSubmit={handleSubmit}>
@@ -44,32 +37,32 @@ function NewTransaction({updateTableData}) {
             placeholder='(YYYY-MM-DD)'
             pattern="\d{4}-\d{2}-\d{2}"
             id="date"
-            value={newtransactions.date}
-            onChange={(e) => setnewTransactions({...newtransactions, date: e.target.value})}
+            value={newTransactions.date}
+            onChange={(e) => setnewTransactions({...newTransactions, date: e.target.value})}
             /> 
 
             <label htmlFor="description">Description: </label>
             <input
             type="text"
             id="description"
-            value={newtransactions.description}
-            onChange={(e) => setnewTransactions({...newtransactions, description: e.target.value})}
+            value={newTransactions.description}
+            onChange={(e) => setnewTransactions({...newTransactions, description: e.target.value})}
             /> 
 
             <label htmlFor="category">Category: </label>
             <input
             type="text"
             id="category"
-            value={newtransactions.category}
-            onChange={(e) => setnewTransactions({...newtransactions, category: e.target.value})}
+            value={newTransactions.category}
+            onChange={(e) => setnewTransactions({...newTransactions, category: e.target.value})}
             /> 
 
             <label htmlFor="amount">Amount: </label>
             <input
             type="text"
             id="amount"
-            value={newtransactions.amount}
-            onChange={(e) => setnewTransactions({...newtransactions, amount: e.target.value})}
+            value={newTransactions.amount}
+            onChange={(e) => setnewTransactions({...newTransactions, amount: e.target.value})}
             /> 
 
             <input type="submit" value="Add"/>

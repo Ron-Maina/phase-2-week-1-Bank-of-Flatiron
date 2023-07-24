@@ -26,30 +26,13 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div id="main">
+      <SearchTransaction transactions={transactions}/>
+      <NewTransaction />
       <TableOfTransactions transactions={transactions}/>
     </div>
   )
-  // function map(){
-  //   const transactionElements = transactions.map((transaction) => {
-  //     return(
-  //       <div>
-  //         {transaction.date}
-  //         {transaction.description}
-  //         {transaction.category}
-  //         {transaction.amount}
-  //       </div>
-  //     )
-  //   })
-  // }
-  // console.log(transactionElements)
-  // return (
-  //   <div>
-  //     <TableOfTransactions elements = {transactionElements}/>
-  //   </div>
-  // )
-  
-  
+ 
 }
 
 export default App;

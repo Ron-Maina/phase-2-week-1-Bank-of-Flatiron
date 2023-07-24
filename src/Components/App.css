@@ -42,3 +42,13 @@ td,th{
   text-align: left;
   padding: 8px;
 }
+form{
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+#table{
+  padding-top: 70px;
+} 

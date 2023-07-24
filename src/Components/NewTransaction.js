@@ -3,11 +3,12 @@ import React, {useState, useEffect, useRef} from 'react'
 // import TableOfTransactions from './TableOfTransactions'
 import App from './App'
 import DisplayForms from './DisplayForms'
+import TableOfTransactions from './TableOfTransactions'
 
 
-function NewTransaction() {
+function NewTransaction({updateTableData}) {
    
- 
+   console.log(updateTableData)
     //Single state element for all input fields
     const [newtransactions, setnewTransactions] = useState({
         date: "",
@@ -16,22 +17,22 @@ function NewTransaction() {
         amount: "",
     })
     
-    
-
     function handleSubmit(e){
         e.preventDefault()
-        console.log(newtransactions)
-         
+        updateTableData(newtransactions)
+        setnewTransactions({
+            date: "",
+            description: "",
+            category: "",
+            amount: "",
+        })
+
+      
     }
-    // useEffect(() => {
-    //     fetch('http://localhost:3001/transactions', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(newtransactions)
-    //     })
-    // }, [])
+    
+    
+    
+    
     
     return (
         <>

@@ -4,17 +4,10 @@ import React, {useState, useEffect} from 'react'
 import SearchTransaction from './SearchTransaction'
 import NewTransaction from './NewTransaction'
 
-function DisplayForms({transactions}) {
+function DisplayForms({transactions,updateTableData}) {
     const [searchVisible, setSearchVisible] = useState(false)
     const [NewTransactionForm, setNewTransactionForm] = useState(false)
-    
-  // useEffect(() => {
-  //   if(searchVisible === true){
-  //     setNewTransactionForm(false)
-  //   } else if (NewTransactionForm === true){
-  //     setSearchVisible(false)
-  //   }
-  // }, [searchVisible, NewTransactionForm])
+
 
   return (
     <div>
@@ -23,7 +16,7 @@ function DisplayForms({transactions}) {
             <button onClick={() => setSearchVisible(true)}>Search Transaction</button>
         </nav>
           {searchVisible ? <SearchTransaction transactions={transactions}/> : null}
-          {NewTransactionForm ? <NewTransaction /> : null}  
+          {NewTransactionForm ? <NewTransaction updateTableData={updateTableData}/> : null}  
     </div>
    
   )

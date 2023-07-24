@@ -52,3 +52,9 @@ form{
 #table{
   padding-top: 70px;
 } 
+nav {
+  padding-top: 10px;
+}
+nav button{
+  margin-right: 20px;
+}

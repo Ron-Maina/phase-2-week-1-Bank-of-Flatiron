@@ -10,6 +10,7 @@ import DisplayForms from './DisplayForms';
 function App() {
 
   const [transactions, setTransactions] = useState([])
+  // const [tableData, setTableData] = useState([])
   useEffect(() => {
     fetch('http://localhost:3001/transactions')
     .then(res => res.json())
@@ -25,9 +26,13 @@ function App() {
     })
   }, [])
 
+  function updateTableData(newtransactions){
+    setTransactions((transactions) =>  [...transactions, newtransactions])
+  }
+
   return (
     <div id="main">
-      <DisplayForms transactions={transactions}/>
+      <DisplayForms transactions={transactions} updateTableData={updateTableData}/>
       <TableOfTransactions transactions={transactions}/>
     </div>
   )

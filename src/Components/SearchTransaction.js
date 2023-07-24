@@ -19,7 +19,7 @@ function SearchTransaction({transactions}) {
         // return <TableOfTransactions transactions={filteredData}/>
         // console.log(match)
       }, [searchTerm])
-   
+      
       
       
  

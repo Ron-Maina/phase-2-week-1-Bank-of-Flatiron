@@ -2,6 +2,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 // import TableOfTransactions from './TableOfTransactions'
 import App from './App'
+import DisplayForms from './DisplayForms'
 
 
 function NewTransaction() {
@@ -15,7 +16,7 @@ function NewTransaction() {
         amount: "",
     })
     
-    // const Updatedtransactions = [...Addedtransactions, newtransactions]
+    
 
     function handleSubmit(e){
         e.preventDefault()
@@ -72,7 +73,6 @@ function NewTransaction() {
 
             <input type="submit" value="Add"/>
         </form>
-        
         </>
     )
 }

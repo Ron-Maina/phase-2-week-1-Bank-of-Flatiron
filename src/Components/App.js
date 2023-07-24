@@ -27,8 +27,7 @@ function App() {
 
   return (
     <div id="main">
-      <SearchTransaction transactions={transactions}/>
-      <NewTransaction />
+      <DisplayForms transactions={transactions}/>
       <TableOfTransactions transactions={transactions}/>
     </div>
   )

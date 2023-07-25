@@ -27,9 +27,15 @@ code .
 ```
 4. On the terminal, run the database server using:
 ```
+cd data
+```
+```
 json-server --watch db.json --port 3001
 ```
-5. On a new terminal run the following command to open the react app on the browser
+5. On a new terminal window run the following command to open the react app on the browser
+```
+npm install
+```
 ```
 npm start
 ```

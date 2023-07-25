@@ -1,6 +1,5 @@
 //Handles the creation of a new transaction
-import React, {useState, useEffect} from 'react'
-
+import React, {useState} from 'react'
 
 function NewTransaction({updateTableData}) {
    
@@ -12,7 +11,7 @@ function NewTransaction({updateTableData}) {
         category: "",
         amount: "",
     })
-    
+   
     //handles form submit functionality
     function handleSubmit(e){
         e.preventDefault()
@@ -23,9 +22,8 @@ function NewTransaction({updateTableData}) {
             category: "",
             amount: "",
         })
-        alert("Transaction Added Successfully")
-      
     }
+
     //rendered JSX
     return (
         <>
@@ -68,5 +66,4 @@ function NewTransaction({updateTableData}) {
         </>
     )
 }
-
 export default NewTransaction

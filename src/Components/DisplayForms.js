@@ -13,6 +13,7 @@ function DisplayForms({renderSearch,updateTableData}) {
       setSearchVisible((prevState) => !prevState)
       setNewTransactionForm((prevState) => !prevState)
     }
+    
   return (
     <div>
         <nav>

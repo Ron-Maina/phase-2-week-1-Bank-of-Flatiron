@@ -16,8 +16,7 @@ function SearchTransaction({renderSearch}) {
         renderSearch(searchTerm)
         setSearchTerm("")    
     }
-  
-   
+
   return (
     <form onSubmit={handleSubmit}>
         <h2>Search Transaction</h2>
@@ -33,6 +32,4 @@ function SearchTransaction({renderSearch}) {
     </form>
   )
 }
-
-
 export default SearchTransaction

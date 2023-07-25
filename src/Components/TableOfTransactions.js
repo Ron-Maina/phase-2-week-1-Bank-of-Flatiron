@@ -1,10 +1,9 @@
 //Renders transactions from the db.json folder to the DOM
 
-import React, {useState, useEffect} from 'react'
-
+import React from 'react'
 
 //function receiving an argument from the App.js
-function TableOfTransactions({transactions, match}){
+function TableOfTransactions({transactions}){
   
   return (
     <div id="table">
@@ -19,7 +18,7 @@ function TableOfTransactions({transactions, match}){
             </tr>
             <>
             {transactions.map(transaction => (
-            <tr key={transaction.id}>
+            <tr key={transaction.id || transaction.category}>
                 <td>{transaction.date}</td>
                 <td>{transaction.description}</td>
                 <td>{transaction.category}</td>
@@ -32,5 +31,4 @@ function TableOfTransactions({transactions, match}){
     </div>
   )
 }
-
 export default TableOfTransactions

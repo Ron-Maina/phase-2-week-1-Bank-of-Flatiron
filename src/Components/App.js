@@ -5,9 +5,6 @@ import './App.css';
 import TableOfTransactions from './TableOfTransactions';
 import DisplayForms from './DisplayForms';
 
-
-
-
 function App() {
   //Fetching data from the db.json file to populate the transaction table
   useEffect(() => {
@@ -28,11 +25,7 @@ function App() {
   const [transactions, setTransactions] = useState([])
   
   const [searchQuery, setSearchQuery] = useState("")
-
-  const [match, setMatch] = useState([])
   
-  const transactionsCopy = [...transactions]
-
   function updateTableData(newTransactions){
     setTransactions((transactions) =>  [...transactions, newTransactions])
   }
@@ -54,7 +47,7 @@ function App() {
       <DisplayForms renderSearch={renderSearch} updateTableData={updateTableData}/>
       
       {/* Render table with the fetched transactions and filtered transaction*/}
-      <TableOfTransactions transactions={transactions} match={match}/>
+      <TableOfTransactions transactions={transactions}/>
     </div>
   )
 

@@ -33,9 +33,7 @@ function NewTransaction({updateTableData}) {
             <h2>Add Transaction</h2>
             <label htmlFor="date">Date: </label>
             <input
-            type="text"
-            placeholder='(YYYY-MM-DD)'
-            pattern="\d{4}-\d{2}-\d{2}"
+            type="date"
             id="date"
             value={newTransactions.date}
             onChange={(e) => setnewTransactions({...newTransactions, date: e.target.value})}
